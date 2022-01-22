@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
+import { jwtConstants } from './constants';
 
 @Injectable()
 export class AuthService {
@@ -23,6 +24,8 @@ export class AuthService {
         const payload = { sub: user.id, name: user.name };
         return {
             access_token: this.jwtService.sign(payload),
+            token_type: "Bearer",
+            expires_in: jwtConstants.expiresIn,
         }
     }
 }
