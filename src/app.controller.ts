@@ -8,7 +8,7 @@ export class AppController {
 
     @UseGuards(LocalAuthGuard)
     @Post('login')
-    // user will be in the request object after the authentication in LocalAuthGuard
+    // user will be in the request object after the authentication in LocalAuthGuard -> LocalStrategy
     login(@Request() req): any {
         return req.user;
     }
